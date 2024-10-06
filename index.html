@@ -85,9 +85,9 @@
                         
                         <label for="appointment-type">Tipo de Agendamento:</label>
                         <select id="appointment-type" name="appointment-type" required>
-                            <option value="">Selecione uma opção</option>
-                            <option value="budget">Solicitar Orçamento</option>
-                            <option value="procedure">Agendar Procedimento</option>
+                            <option value="selecione" selected>Selecione uma opção</option>
+                            <option>Solicitar Orçamento</option>
+                            <option>Agendar Procedimento</option>
                         </select>
 
                         <div id="time-buttons" style="display: none;">
@@ -100,7 +100,7 @@
                         </div>
 
                         <label for="description">Descrição:</label>
-                        <textarea id="description" name="description" rows="4" placeholder="Nos conte sua idéia"></textarea>
+                        <textarea id="description" name="description" rows="4" required placeholder="Nos conte sua idéia"></textarea>
 
                         <label for="data">Escolha uma data:</label>
                         <input type="date" id="data" name="data" required>
