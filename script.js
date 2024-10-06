@@ -53,3 +53,70 @@ window.onclick = function(event) {
         }
     }
 }
+
+document.getElementById('appointment-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita o envio do formulário padrão
+
+    // Obtém os elementos dos campos de registro
+    var nameInput = document.getElementById('name');
+    var phoneInput = document.getElementById('phone');
+    var appointmentInput = document.getElementById('appointment-type');
+    var descriptionInput = document.getElementById('description');
+    var dataInput = document.getElementById('data');
+
+    // Obtém os valores dos campos de registro
+    var name = nameInput.value;
+    var phone = phoneInput.value;
+    var appointment = appointmentInput.value;
+    var description = descriptionInput.value;
+    var data = dataInput.value;
+
+    console.log(appointment)
+
+    if (appointment === 'selecione') {
+      appointmentInput.classList.add('invalid-input');
+      alert('Por favor, preencha o tipo de agendamento.');
+      return;
+    } else {
+      appointmentInput.classList.remove('invalid-input');
+    }
+
+    // Objeto com os dados a serem enviados
+    var data = {
+      nome: name,
+      telefone: phone,
+      tipoAgendamento: appointment,
+      descricao: description,
+      dataAgendamento: data
+    };
+
+    // Envia os dados para o servidor usando Fetch API
+    //fetch('https://sleepy-everglades-97802-cdc3033e6535.herokuapp.com/auth/register', {
+    fetch('http://localhost:8080/agendamentos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Erro ao registrar');
+        }
+        // Se o registro foi bem-sucedido, redireciona para a página de login
+        alert('Registro realizado com sucesso!');
+        window.location.href = 'index.html';
+      })
+      .catch(function (error) {
+        console.error('Erro:', error);
+        // Aqui você pode exibir uma mensagem de erro para o usuário, se desejar
+      });
+  });
+
+//   function formatDate(dateStr) {
+//     // Divide a string da data em dia, mês e ano
+//     const [day, month, year] = dateStr.split('/');
+    
+//     // Reorganiza a data no formato yyyy-MM-dd
+//     return `${year}-${month}-${day}`;
+// }
