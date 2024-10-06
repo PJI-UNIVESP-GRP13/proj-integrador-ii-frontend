@@ -91,8 +91,7 @@ document.getElementById('appointment-form').addEventListener('submit', function 
     };
 
     // Envia os dados para o servidor usando Fetch API
-    //fetch('https://sleepy-everglades-97802-cdc3033e6535.herokuapp.com/auth/register', {
-    fetch('http://localhost:8080/agendamentos', {
+    fetch('https://sleepy-everglades-97802-cdc3033e6535.herokuapp.com/agendamentos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
